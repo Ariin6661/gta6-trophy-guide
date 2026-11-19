@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI Trophy Guide &amp; Tracker — All 55 PS5 Trophies</title>
+<meta name="description" content="An offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: official names, descriptions and grades, original guides with sources, a roadmap to the platinum, missable flags, and a saved checklist.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237a1e5c'/%3E%3Ctext x='32' y='43' font-size='28' font-family='Arial,sans-serif' font-weight='bold' fill='%23ffd9a8' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/guide.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="lede">All 55 trophies — 1 platinum, 2 gold, 6 silver, 46 bronze — with an original guide and a named source for every one, a roadmap to the platinum, and a tracker that saves your progress in this browser.</p>
+    <div class="progress-wrap" aria-label="Overall progress">
+      <div class="progress-line"><span id="progress-text">0 of 55 earned</span><span id="progress-pct">0%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <ul class="grade-counts" id="grade-counts"></ul>
+    </div>
+  </div>
+</header>
+
+<nav class="view-tabs" aria-label="Views">
+  <button type="button" class="tab active" data-view="checklist" aria-current="page">Checklist</button>
+  <button type="button" class="tab" data-view="roadmap">Roadmap to Platinum</button>
+  <button type="button" class="tab" data-view="missables">Missables</button>
+</nav>
+
+<section class="toolbar" aria-label="Filters and tools">
+  <label class="tool-search">Search
+    <input type="search" id="search" placeholder="Search name or description…" autocomplete="off">
+  </label>
+  <label class="tool-select">Grade
+    <select id="grade-filter">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="tool-select">Kind
+    <select id="kind-filter">
+      <option value="all">All kinds</option>
+      <option value="story">Story</option>
+      <option value="missable">Missable</option>
+      <option value="collectibles">Collectibles</option>
+      <option value="activities">Activities</option>
+      <option value="online">Online</option>
+    </select>
+  </label>
+  <label class="tool-select">Show
+    <select id="earned-filter">
+      <option value="all">All trophies</option>
+      <option value="earned">Earned only</option>
+      <option value="unearned">Not yet earned</option>
+    </select>
+  </label>
+  <label class="tool-check"><input type="checkbox" id="spoiler-toggle"> Hide story spoilers</label>
+  <div class="tool-actions">
+    <button type="button" id="export-btn">Export progress (JSON)</button>
+    <button type="button" id="import-btn">Import progress</button>
+    <input type="file" id="import-file" accept="application/json,.json" hidden>
+  </div>
+</section>
+
+<main class="layout">
+  <section class="panel checklist-panel" id="view-checklist" aria-label="Trophy checklist">
+    <p class="list-meta" id="list-meta"></p>
+    <ul class="trophy-list" id="trophy-list"></ul>
+    <p class="empty-note" id="empty-note" hidden>No trophies match these filters. Clear the search or pick another kind.</p>
+  </section>
+
+  <aside class="panel detail-panel" id="detail-panel" aria-label="Trophy detail" aria-live="polite">
+    <p class="detail-empty" id="detail-empty">Select a trophy on the left to read its guide and sources here.</p>
+    <article class="detail" id="detail" hidden>
+      <p class="detail-grade" id="detail-grade"></p>
+      <h2 id="detail-name"></h2>
+      <p class="detail-desc" id="detail-desc"></p>
+      <dl class="detail-facts" id="detail-facts"></dl>
+      <h3>Guide</h3>
+      <p class="detail-guide" id="detail-guide"></p>
+      <h3>Sources</h3>
+      <ul class="detail-sources" id="detail-sources"></ul>
+      <button type="button" class="detail-toggle" id="detail-toggle">Mark as earned</button>
+    </article>
+  </aside>
+
+  <section class="panel roadmap-panel" id="view-roadmap" hidden aria-label="Roadmap to the platinum">
+    <h2>Roadmap to the platinum</h2>
+    <p class="panel-intro">One playthrough, no online play, no DLC. PowerPyx puts the platinum at about 200 hours; Push Square at 250 hours or more. The stages below are the order to earn them in.</p>
+    <ol class="roadmap" id="roadmap-list"></ol>
+  </section>
+
+  <section class="panel missables-panel" id="view-missables" hidden aria-label="Missable trophies">
+    <h2>Missable trophies</h2>
+    <p class="panel-intro">Only one trophy is flagged as possibly missable. Everything else stays available in free roam after the story, and missions cannot be replayed — so keep a save at the start and end of each chapter.</p>
+    <ul class="trophy-list" id="missable-list"></ul>
+    <h3>Looks missable, but is not</h3>
+    <ul class="safe-list" id="safe-list"></ul>
+  </section>
+</main>
+
+<footer class="colophon">
+  <p>Names, descriptions and grades are the official ones as PlayStation publishes them, as listed by Exophase and PSNProfiles on 18 November 2026. Every guide is written in original words for this entry and names its sources. 28 of the 55 trophies are hidden on PlayStation until earned; none needs online play. This guide works fully offline — it loads nothing from the network.</p>
+  <p class="status-line" id="status-line" role="status"></p>
+</footer>
+
+<script type="module" src="js/boot.js"></script>
+</body>
+</html>

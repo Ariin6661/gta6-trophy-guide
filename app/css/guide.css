@@ -1,0 +1,163 @@
+/* Leonida Trophy Guide — own design. System fonts only, no external files. */
+:root {
+  --ink: #f4eef7;
+  --ink-dim: #c9b8d4;
+  --ink-faint: #9a8aa6;
+  --page: #150a20;
+  --panel: #221130;
+  --panel-edge: #3a2350;
+  --panel-soft: #2b1a3e;
+  --accent: #ff5e8a;
+  --accent-2: #ff9a3d;
+  --gold: #f5c542;
+  --silver: #c3cad8;
+  --bronze: #d08a4e;
+  --platinum: #8fe3ff;
+  --good: #7ddf8e;
+  --danger: #ff7a6e;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--page); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 8px; }
+p { margin: 0 0 10px; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+.masthead {
+  background: linear-gradient(115deg, #3d1145 0%, #7a1e5c 48%, #c2542a 100%);
+  border-bottom: 3px solid var(--accent-2);
+}
+.masthead-inner { max-width: 1240px; margin: 0 auto; padding: 28px 20px 22px; }
+.kicker { margin: 0 0 6px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #ffd9a8; }
+.masthead h1 { font-size: 40px; letter-spacing: -0.5px; }
+.lede { max-width: 760px; color: #ffe9f2; }
+
+.progress-wrap { max-width: 760px; margin-top: 16px; }
+.progress-line { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
+.progress-bar { height: 12px; margin-top: 6px; border-radius: 999px; background: rgba(0, 0, 0, 0.35); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 0.25s ease; }
+.grade-counts { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; padding: 0; font-size: 13px; color: #ffe9f2; }
+.grade-counts li b { color: #fff; }
+
+.view-tabs {
+  max-width: 1240px; margin: 0 auto; padding: 14px 20px 0;
+  display: flex; gap: 8px;
+}
+.tab {
+  border: 1px solid var(--panel-edge);
+  background: var(--panel);
+  color: var(--ink-dim);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.tab:hover { color: var(--ink); border-color: var(--accent); }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.toolbar {
+  max-width: 1240px; margin: 14px auto 0; padding: 0 20px;
+  display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end;
+}
+.toolbar label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--ink-faint); }
+.toolbar input[type="search"], .toolbar select {
+  background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 8px;
+  padding: 8px 10px; min-width: 150px; color: var(--ink);
+}
+.toolbar input[type="search"] { min-width: 230px; }
+.toolbar input:focus, .toolbar select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.tool-check { flex-direction: row !important; align-items: center; gap: 8px !important; padding-bottom: 9px; text-transform: none !important; letter-spacing: 0 !important; font-size: 14px !important; color: var(--ink) !important; }
+.tool-actions { display: flex; gap: 8px; margin-left: auto; }
+.tool-actions button, .detail-toggle {
+  background: var(--panel-soft); border: 1px solid var(--panel-edge);
+  padding: 9px 14px; border-radius: 8px; font-weight: 700;
+}
+.tool-actions button:hover, .detail-toggle:hover { border-color: var(--accent); color: #fff; }
+
+.layout {
+  max-width: 1240px; margin: 16px auto 0; padding: 0 20px 8px;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px;
+  align-items: start;
+}
+.panel { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: var(--radius); padding: 16px; }
+.panel h2 { font-size: 22px; }
+.panel-intro { color: var(--ink-dim); }
+.list-meta { color: var(--ink-faint); font-size: 13px; margin-bottom: 10px; }
+
+.trophy-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.trophy-row {
+  display: grid; grid-template-columns: 30px 1fr auto; gap: 4px 12px; align-items: start;
+  border: 1px solid var(--panel-edge); border-radius: 10px; padding: 10px 12px;
+  background: var(--panel-soft); cursor: pointer; text-align: left; width: 100%;
+}
+.trophy-row:hover { border-color: var(--accent); }
+.trophy-row.selected { border-color: var(--accent-2); box-shadow: 0 0 0 1px var(--accent-2); }
+.trophy-row.earned { border-color: #3f7a4a; }
+.trophy-row input[type="checkbox"] { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--good); cursor: pointer; }
+.trophy-name { font-weight: 700; font-size: 15px; }
+.trophy-desc { color: var(--ink-dim); font-size: 13.5px; margin-top: 2px; }
+.trophy-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); color: var(--ink-dim); }
+.tag.grade-platinum { background: rgba(143, 227, 255, 0.16); color: var(--platinum); }
+.tag.grade-gold { background: rgba(245, 197, 66, 0.16); color: var(--gold); }
+.tag.grade-silver { background: rgba(195, 202, 216, 0.16); color: var(--silver); }
+.tag.grade-bronze { background: rgba(208, 138, 78, 0.18); color: var(--bronze); }
+.tag.missable { background: rgba(255, 122, 110, 0.16); color: var(--danger); }
+.tag.hidden-tag { background: rgba(255, 94, 138, 0.14); color: var(--accent); }
+.trophy-count { font-size: 12px; font-weight: 700; color: var(--ink-faint); white-space: nowrap; padding-top: 4px; }
+.trophy-row.earned .trophy-name { color: var(--good); }
+
+.detail-panel { position: sticky; top: 12px; }
+.detail-empty { color: var(--ink-faint); margin: 0; }
+.detail-grade { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.detail-grade.grade-platinum { color: var(--platinum); }
+.detail-grade.grade-gold { color: var(--gold); }
+.detail-grade.grade-silver { color: var(--silver); }
+.detail-grade.grade-bronze { color: var(--bronze); }
+.detail h2 { font-size: 24px; }
+.detail-desc { color: var(--ink-dim); font-style: italic; }
+.detail-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0 0 12px; font-size: 13.5px; }
+.detail-facts dt { color: var(--ink-faint); font-weight: 700; }
+.detail-facts dd { margin: 0; }
+.detail h3 { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); margin-top: 16px; }
+.detail-guide { white-space: pre-wrap; }
+.detail-sources { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-dim); }
+.detail-sources li { margin-bottom: 4px; }
+.detail-toggle { margin-top: 18px; width: 100%; }
+.detail-toggle.earned { border-color: var(--good); color: var(--good); }
+
+.roadmap-panel, .missables-panel { grid-column: 1 / -1; }
+.roadmap { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.roadmap-stage { border: 1px solid var(--panel-edge); border-radius: 10px; padding: 14px 16px; background: var(--panel-soft); }
+.roadmap-stage h3 { font-size: 17px; }
+.roadmap-stage h3 .stage-hours { font-size: 13px; font-weight: 400; color: var(--ink-faint); }
+.roadmap-stage p { color: var(--ink-dim); margin-bottom: 10px; }
+.stage-trophies { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.stage-trophies li { font-size: 12.5px; background: rgba(255, 255, 255, 0.07); border-radius: 999px; padding: 3px 10px; }
+.stage-trophies li.done { color: var(--good); text-decoration: line-through; }
+.safe-list { margin: 0; padding-left: 20px; color: var(--ink-dim); }
+.safe-list li { margin-bottom: 8px; }
+.safe-list b { color: var(--ink); }
+.empty-note { color: var(--ink-faint); }
+
+.colophon { max-width: 1240px; margin: 8px auto 0; padding: 0 20px 28px; color: var(--ink-faint); font-size: 13px; }
+.status-line { color: var(--good); min-height: 18px; }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .detail-panel { position: static; }
+  .masthead h1 { font-size: 30px; }
+  .tool-actions { margin-left: 0; }
+}
